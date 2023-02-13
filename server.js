@@ -4,10 +4,6 @@ const fs = require("fs");
 const util = require('util');
 const path = require('path');
 
-//! handling asynch processes 
-const = readFileAsync = util.promisify(fs.readFile);
-const = writeFileAsync = util.promisify(fs.writeFile);
-
 //! server configuration
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -15,12 +11,34 @@ const PORT = process.env.PORT || 3001;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+//! handling asynch processes 
+const = readFile = util.promisify(fs.readFile);
+const = writeFile = util.promisify(fs.writeFile);
+
 //! middleware
 app.use(express.static(path.join("./public")));
 
 //! routes "get"
+app.get("/api/notes", (req, res) => {
+  readFile('./db/db.json', 'utf8').then((data) => {
+    notes = [].concat(JSON.parse(data));
+    res.json(notes);
+  });
+});
 
 //! routes "post"
+app.post("/api/notes", (req, res) => {
+  const note = req.body;
+  readFile('./db/db.json', 'utf8').then((data) => {
+    const notes = [].concat(JSON.parse(data));
+    note.id = notes.length + 1;
+    notes.push(note);
+    return notes;
+  }).then((notes) => {
+    writeFile('./db/db.json', JSON.stringify(notes));
+    res.json(notes);
+});
+
 
 //! routes "delete"
 
