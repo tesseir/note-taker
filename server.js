@@ -3,12 +3,26 @@ const express = require('express');
 const fs = require("fs");
 const util = require('util');
 const path = require('path');
-const PORT = process.evn.PORT || 3001;
-const app = express();
 
-//!
-app.use(express.json());
+//! handling asynch processes 
+const = readFileAsync = util.promisify(fs.readFile);
+const = writeFileAsync = util.promisify(fs.writeFile);
+
+//! server configuration
+const app = express();
+const PORT = process.env.PORT || 3001;
+
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+//! middleware
+app.use(express.static(path.join("./public")));
+
+//! routes "get"
+
+//! routes "post"
+
+//! routes "delete"
 
 //! html routes
 app.get('/notes', (req, res) => {
