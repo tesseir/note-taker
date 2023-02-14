@@ -8,7 +8,7 @@ Heroku: https://note-takerfdsaf.herokuapp.com/index.html
 
 ## Image of use:
 
-![image of use](https://raw.githubusercontent.com/tesseir/note-taker/main/assets/readmeimg/Capture.PNG)
+![image of use](https://raw.githubusercontent.com/tesseir/note-taker/main/assets/Capture.PNG)
 
 ## Description
 
