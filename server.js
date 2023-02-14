@@ -3,6 +3,7 @@ const express = require('express');
 const fs = require("fs");
 const util = require('util');
 const path = require('path');
+const uuid = require('./helpers/uuid.js');
 
 //! server configuration
 const app = express();
@@ -11,12 +12,14 @@ const PORT = process.env.PORT || 3001;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+//! middleware
+app.use(express.static(path.join("./public")));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
 //! handling asynch processes 
 const = readFile = util.promisify(fs.readFile);
 const = writeFile = util.promisify(fs.writeFile);
-
-//! middleware
-app.use(express.static(path.join("./public")));
 
 //! routes "get"
 app.get("/api/notes", (req, res) => {
@@ -37,10 +40,13 @@ app.post("/api/notes", (req, res) => {
   }).then((notes) => {
     writeFile('./db/db.json', JSON.stringify(notes));
     res.json(notes);
+  });
 });
 
-
 //! routes "delete"
+app.delete("/api/notes/:id", (req, res) => {
+
+});
 
 //! html routes
 app.get('/notes', (req, res) => {
