@@ -1,14 +1,19 @@
 # 11 Express.js Challenge: Note Taker 
 
-Github Repo:
+Github Repo: https://github.com/tesseir/note-taker
 
-Deployed Page:
+Deployed Page: https://tesseir.github.io/note-taker/
+
+Heroku: https://note-takerfdsaf.herokuapp.com/index.html
 
 ## Image of use:
 
-![image of use]()
+![image of use](https://raw.githubusercontent.com/tesseir/note-taker/main/assets/readmeimg/Capture.PNG)
 
 ## Description
 
 Note Taking Application
 
+## Install 
+
+npm install
